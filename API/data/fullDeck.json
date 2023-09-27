@@ -1,0 +1,303 @@
+{
+    "cards": [
+        {
+            "name": "Dr axolotl",
+            "power": 4,
+            "keywords": [
+                "poisonous"
+            ],
+            "ability": "onPlay:playerPV:+2",
+            "cardNumber": 1,
+            "copy": 2
+        },
+        {
+            "name": "Oursabeille",
+            "power": 8,
+            "keywords": [],
+            "ability": "always:card:!beBlockCard<=6",
+            "cardNumber": 2,
+            "copy": 1
+        },
+        {
+            "name": "Neuromouche",
+            "power": 4,
+            "keywords": [],
+            "ability": "onPlay:player:get1OppenentPlayingCard>=6",
+            "cardNumber": 3,
+            "copy": 1
+        },
+        {
+            "name": "Reptireur d'élite",
+            "power": 1,
+            "keywords": [
+                "sneaky"
+            ],
+            "ability": "onAttack:opponentPV:-1",
+            "cardNumber": 4,
+            "copy": 1
+        },
+        {
+            "name": "Dracompost",
+            "power": 3,
+            "keywords": [
+                "hunter"
+            ],
+            "ability": "onPlay:player:play1DiscardCard",
+            "cardNumber": 5,
+            "copy": 2
+        },
+        {
+            "name": "Veuve noire",
+            "power": 2,
+            "keywords": [
+                "poisonous"
+            ],
+            "ability": "always:opponent:!onPlay",
+            "cardNumber": 6,
+            "copy": 1
+        },
+        {
+            "name": "Pachypoulpe",
+            "power": 7,
+            "keywords": [
+                "tough"
+            ],
+            "ability": "always:opponent:!blockCard<=4",
+            "cardNumber": 7,
+            "copy": 1
+        },
+        {
+            "name": "Crapaud bombe",
+            "power": 5,
+            "keywords": [
+                "frenzy"
+            ],
+            "ability": "onDeath:player:kill1",
+            "cardNumber": 8,
+            "copy": 2
+        },
+        {
+            "name": "Furet saboteur",
+            "power": 2,
+            "keywords": [
+                "sneaky"
+            ],
+            "ability": "onPlay:opponent:discard2HandDeckCards",
+            "cardNumber": 9,
+            "copy": 2
+        },
+        {
+            "name": "Giraffodile",
+            "power": 7,
+            "keywords": [],
+            "ability": "onPlay:player:pickAllDiscard",
+            "cardNumber": 10,
+            "copy": 1
+        },
+        {
+            "name": "Goblin-garou",
+            "power": 2,
+            "keywords": [
+                "hunter"
+            ],
+            "ability": "onPlayerTurn:card:+6",
+            "cardNumber": 11,
+            "copy": 2
+        },
+        {
+            "name": "Gorillion",
+            "power": 10,
+            "keywords": [],
+            "ability": "none",
+            "cardNumber": 12,
+            "copy": 1
+        },
+        {
+            "name": "Pilleur de tombes",
+            "power": 7,
+            "keywords": [
+                "tough"
+            ],
+            "ability": "onPlay:player:play1opponentDiscardCard",
+            "cardNumber": 13,
+            "copy": 2
+        },
+        {
+            "name": "Mamie harpie",
+            "power": 5,
+            "keywords": [],
+            "ability": "onDeath:player:getMax2opponentPlayingCard<=5",
+            "cardNumber": 14,
+            "copy": 1
+        },
+        {
+            "name": "Kangousaurus rex",
+            "power": 7,
+            "keywords": [],
+            "ability": "onPlay:opponentPlayingCard<=4:death",
+            "cardNumber": 15,
+            "copy": 2
+        },
+        {
+            "name": "Abeille tueuse",
+            "power": 5,
+            "keywords": [
+                "hunter"
+            ],
+            "ability": "onPlay:opponentPV:-1",
+            "cardNumber": 16,
+            "copy": 2
+        },
+        {
+            "name": "Yéti solitaire",
+            "power": 5,
+            "keywords": [
+                "tough"
+            ],
+            "ability": "always:playerPlayingCard=1:card+5&frenzy",
+            "cardNumber": 17,
+            "copy": 1
+        },
+        {
+            "name": "Gladiataure",
+            "power": 9,
+            "keywords": [
+                "frenzy"
+            ],
+            "ability": "none",
+            "cardNumber": 18,
+            "copy": 2
+        },
+        {
+            "name": "Sirène mystérieuse",
+            "power": 7,
+            "keywords": [],
+            "ability": "onPlay:playerPV:=opponentPV",
+            "cardNumber": 19,
+            "copy": 1
+        },
+        {
+            "name": "Scorpion blindé",
+            "power": 2,
+            "keywords": [
+                "tough",
+                "poisonous"
+            ],
+            "ability": "none",
+            "cardNumber": 20,
+            "copy": 2
+        },
+        {
+            "name": "Rhino tortue",
+            "power": 8,
+            "keywords": [
+                "frenzy",
+                "tough"
+            ],
+            "ability": "none",
+            "cardNumber": 21,
+            "copy": 2
+        },
+        {
+            "name": "Requin toutou",
+            "power": 4,
+            "keywords": [
+                "hunter"
+            ],
+            "ability": "onAttack:opponentPlayingCards>=6:1death",
+            "cardNumber": 22,
+            "copy": 1
+        },
+        {
+            "name": "Requin crabe chien momie pieuvre",
+            "power": 5,
+            "keywords": [],
+            "ability": "always:card:takeKeywordsOfPlayerPlayingCards",
+            "cardNumber": 23,
+            "copy": 1
+        },
+        {
+            "name": "Scarabouclier",
+            "power": 4,
+            "keywords": [
+                "tough"
+            ],
+            "ability": "always:playerPlayingCards:+1",
+            "cardNumber": 24,
+            "copy": 2
+        },
+        {
+            "name": "Hydrescargot",
+            "power": 9,
+            "keywords": [],
+            "ability": "onAttack:opponentPlayerPlayingCards>playerPlayingCards:1death",
+            "cardNumber": 25,
+            "copy": 2
+        },
+        {
+            "name": "Lanceur d'escargots",
+            "power": 1,
+            "keywords": [
+                "poisonous"
+            ],
+            "ability": "always:playerPlayingCards<=4:poisonos&hunterOnPlayingCards",
+            "cardNumber": 26,
+            "copy": 1
+        },
+        {
+            "name": "Arachnhibou",
+            "power": 3,
+            "keywords": [
+                "sneaky",
+                "poisonous"
+            ],
+            "ability": "none",
+            "cardNumber": 27,
+            "copy": 2
+        },
+        {
+            "name": "Baril étrange",
+            "power": 6,
+            "keywords": [],
+            "ability": "onDeath:player:pick2RandomOpponentHandDeckCards",
+            "cardNumber": 28,
+            "copy": 1
+        },
+        {
+            "name": "Tigrécureuil",
+            "power": 3,
+            "keywords": [
+                "sneaky"
+            ],
+            "ability": "onPlay:opponentPlayingCard>=7:death",
+            "cardNumber": 29,
+            "copy": 2
+        },
+        {
+            "name": "Turboustique",
+            "power": 4,
+            "keywords": [],
+            "ability": "onAttack:opponentPV:1",
+            "cardNumber": 30,
+            "copy": 1
+        },
+        {
+            "name": "Huissiéléphant",
+            "power": 8,
+            "keywords": [],
+            "ability": "onAttack:opponentHandDeck:discard1",
+            "cardNumber": 31,
+            "copy": 2
+        },
+        {
+            "name": "Oursins hurleurs",
+            "power": 5,
+            "keywords": [
+                "hunter"
+            ],
+            "ability": "always:playerPlayingCards:+2",
+            "cardNumber": 32,
+            "copy": 1
+        }
+    ]
+}
