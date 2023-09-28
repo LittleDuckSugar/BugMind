@@ -9,6 +9,7 @@ import (
 
 var Game = models.GameData{Player: [2]models.Player{}, PlayerTurn: 0, History: make([]models.Play, 0)}
 
+/*
 func init() {
 	Game.Player[0] = newPlayer("Emma")
 	Game.Player[1] = newPlayer("Antoine")
@@ -28,6 +29,7 @@ func InitParty(c *gin.Context) {
 
 	c.JSON(http.StatusOK, Game)
 }
+*/
 
 func GetParty(c *gin.Context) {
 	c.JSON(http.StatusOK, Game)
