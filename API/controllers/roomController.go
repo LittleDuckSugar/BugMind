@@ -53,9 +53,8 @@ func PostNewRoom(c *gin.Context) {
 	var room models.Room
 
 	if newRoom.Password != "" {
-		password := models.Password{PasswordStr: newRoom.Password}
-		password.Encrypt()
-		room = models.Room{Name: formatedNewRoomName, Status: "created", Private: true, MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0, Password: password.PasswordStr}
+		room = models.Room{Name: formatedNewRoomName, Status: "created", Private: true, MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0, Password: newRoom.Password}
+		room.EncryptPassword()
 	} else {
 		room = models.Room{Name: formatedNewRoomName, Status: "created", Private: false, MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0}
 	}
@@ -83,26 +82,25 @@ func PostPlayerAction(c *gin.Context) {
 
 	action := c.Param("action")[1:]
 	if action == "enter" {
+		var enteringRoom models.EnterRoom
+
+		if c.ShouldBindJSON(&enteringRoom) != nil {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Error while parsing JSON"})
+			return
+		}
+
 		if room.Private {
-			var password models.Password
 
-			if c.ShouldBindJSON(&password) != nil {
-				c.JSON(http.StatusUnauthorized, gin.H{"error": "Error while parsing JSON"})
-				return
-			}
-
-			// check password
-			var roomPassword models.Password
-			roomPassword.PasswordStr = room.Password
-
-			if roomPassword.CheckPassword(password.PasswordStr) != nil {
+			if room.CheckPassword(enteringRoom.Password) != nil {
 				c.JSON(http.StatusForbidden, gin.H{"error": "wrong password"})
 				return
 			}
 		}
-	}
 
-	room.PlayerInside++
+		room.Players[room.PlayerInside] = models.Player{Name: enteringRoom.PlayerName, HP: 3, BugMind: 2, Deck: []models.Card{}, Hand: []models.Card{}, Discard: []models.Card{}, Board: []models.Card{}}
+
+		room.PlayerInside++
+	}
 
 	models.Rooms[room.Name] = room
 
