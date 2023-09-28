@@ -50,14 +50,17 @@ func PostNewRoom(c *gin.Context) {
 		return
 	}
 
-	var room models.Room
+	room := models.Room{Name: formatedNewRoomName, Status: "Created", MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0}
 
 	if newRoom.Password != "" {
-		room = models.Room{Name: formatedNewRoomName, Status: "created", Private: true, MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0, Password: newRoom.Password}
+		room.Private = true
+		room.Password = newRoom.Password
 		room.EncryptPassword()
 	} else {
-		room = models.Room{Name: formatedNewRoomName, Status: "created", Private: false, MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0}
+		room.Private = false
 	}
+
+	room.SetUpPlayersGame()
 
 	// add to memory
 	models.Rooms[room.Name] = room
@@ -97,7 +100,7 @@ func PostPlayerAction(c *gin.Context) {
 			}
 		}
 
-		room.Players[room.PlayerInside] = models.Player{Name: enteringRoom.PlayerName, HP: 3, BugMind: 2, Deck: []models.Card{}, Hand: []models.Card{}, Discard: []models.Card{}, Board: []models.Card{}}
+		room.Players[room.PlayerInside].Name = enteringRoom.PlayerName
 
 		room.PlayerInside++
 	}

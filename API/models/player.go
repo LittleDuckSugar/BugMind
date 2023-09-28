@@ -9,8 +9,8 @@ import (
 type Player struct {
 	Name    string `json:"name"`
 	HP      uint8  `json:"hp"`
-	BugMind uint8  `json:"bugmindLeft"`
-	Deck    []Card `json:"deck"`
+	BugMind uint8  `json:"bugmind"`
+	Draw    []Card `json:"draw"`
 	Hand    []Card `json:"hand"`
 	Discard []Card `json:"discard"`
 	Board   []Card `json:"board"`
@@ -45,9 +45,9 @@ func (player *Player) Play(card Card) (code int, detail string) {
 	player.Hand = append(player.Hand[:cardPos], player.Hand[cardPos+1:]...)
 
 	// draw a card from deck if available
-	if len(player.Deck) != 0 {
-		player.Hand = append(player.Hand, player.Deck[0])
-		player.Deck = player.Deck[1:]
+	if len(player.Draw) != 0 {
+		player.Hand = append(player.Hand, player.Draw[0])
+		player.Draw = player.Draw[1:]
 	}
 
 	return http.StatusAccepted, card.Name + " played"
@@ -69,4 +69,9 @@ func (player *Player) Defend(card Card) {
 
 func (player *Player) isAlive() bool {
 	return player.HP <= 0
+}
+
+func (player *Player) DrawCard(number uint8) {
+	player.Hand = player.Draw[:number]
+	player.Draw = player.Draw[number:]
 }
