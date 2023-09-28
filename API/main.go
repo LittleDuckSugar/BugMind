@@ -19,18 +19,13 @@ func main() {
 
 	router.Use(cors.Default())
 
-	// bugmindRoute := router.Group("/bugmind")
-	// {
-	// 	bugmindRoute.GET("/party/0", bugmind.GetParty)
-	// }
-
 	gamePath := router.Group("/bugmind")
 	{
 		roomPath := gamePath.Group("/room")
 		{
 			roomPath.GET("/:roomName", controllers.GetRoomStatusByName)
-			roomPath.POST("/new-public-room", controllers.PostPublicRoom)
-			roomPath.POST("/new-private-room", controllers.PostPrivateRoom)
+			roomPath.POST("/:roomName/*action", controllers.PostPlayerAction)
+			roomPath.POST("/new-room", controllers.PostNewRoom)
 		}
 		gamePath.GET("/rooms", controllers.GetAllRooms)
 	}
