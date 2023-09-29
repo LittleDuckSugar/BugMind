@@ -14,7 +14,7 @@ type Card struct {
 	Power      uint8    `json:"power"`
 	Keywords   []string `json:"keywords"`
 	Ability    string   `json:"ability"`
-	CardNumber uint8    `json:"cardNumber"`
+	CardNumber uint8    `json:"card-number"`
 	Copy       uint8    `json:"copy"`
 }
 
