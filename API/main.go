@@ -24,10 +24,18 @@ func main() {
 		roomPath := gamePath.Group("/room")
 		{
 			roomPath.GET("/:roomName", controllers.GetRoomStatusByName)
-			roomPath.POST("/:roomName/*action", controllers.PostPlayerAction)
+			roomPath.POST("/:roomName/*action", controllers.PostRoomAction)
 			roomPath.POST("/new-room", controllers.PostNewRoom)
 		}
 		gamePath.GET("/rooms", controllers.GetAllRooms)
+
+		playerPath := gamePath.Group("/player")
+		{
+			playerPath.GET("/:playerName", controllers.GetPlayerInfo)
+			playerPath.POST("/:playerName/:roomName/*action", controllers.PostPlayerActionsInRoom)
+		}
+		gamePath.GET("/players", controllers.GetAllPlayers)
+
 	}
 
 	// router.GET("/bugmind/party/0", bugmind.GetParty)
