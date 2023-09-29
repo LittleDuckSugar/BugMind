@@ -3,7 +3,9 @@ package controllers
 import (
 	"BugMindAPI/models"
 	"BugMindAPI/tools"
+	"math/rand"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -35,6 +37,8 @@ func GetAllRooms(c *gin.Context) {
 
 // PostNewRoom create a new room
 func PostNewRoom(c *gin.Context) {
+	rand.NewSource(time.Now().UnixNano())
+
 	var newRoom models.NewRoom
 
 	if c.ShouldBindJSON(&newRoom) != nil {
@@ -50,7 +54,7 @@ func PostNewRoom(c *gin.Context) {
 		return
 	}
 
-	room := models.Room{Name: formatedNewRoomName, Status: "Created", MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0}
+	room := models.Room{Name: formatedNewRoomName, Status: "Created", MaxPlayer: newRoom.MaxPlayer, PlayerInside: 0, PlayerTurn: rand.Intn(2)}
 
 	if newRoom.Password != "" {
 		room.Private = true
@@ -68,8 +72,8 @@ func PostNewRoom(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"room": room})
 }
 
-// PostPlayerAction player control actions of a user in a room
-func PostPlayerAction(c *gin.Context) {
+// PostRoomAction control actions for a room (create, enter, quit, delete)
+func PostRoomAction(c *gin.Context) {
 
 	room := models.Rooms[c.Param("roomName")]
 

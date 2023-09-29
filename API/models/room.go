@@ -20,6 +20,7 @@ type Room struct {
 	MaxPlayer    uint8     `json:"max-player"`
 	Players      [2]Player `json:"players"`
 	Password     string    `json:"password"`
+	PlayerTurn   int       `json:"player-turn"`
 }
 
 type NewRoom struct {
